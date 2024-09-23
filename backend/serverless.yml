@@ -2,18 +2,21 @@
 service: pr8-one-service-backend
 
 provider:
-  name: aws
-  runtime: nodejs20.x
-  region: ap-south-1
-  httpApi: 
-    cors: true
+    name: aws
+    runtime: nodejs20.x
+    region: ap-south-1
+    httpApi:
+        cors: true
 
 functions:
-  api:
-    handler: dist/index.handler
-    events:
-      - httpApi: "*"
+    api:
+        handler: dist/index.handler
+        events:
+            - httpApi: "*"
 
 plugins:
-  - serverless-offline
-  # - serverless-plugin-typescript
+    - serverless-offline
+
+custom:
+    serverless-offline:
+        httpPort: 5000
